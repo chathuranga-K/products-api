@@ -2,8 +2,6 @@ package uk.ac.westminster.products_api;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -30,7 +28,5 @@ public class HelloController {
     @GetMapping("/status")
     public String status(){
         return "API running - Tutorial 1 | " + LocalDateTime.now().toString();}
-
-    // TODO (Activity 3): add your /goodbye endpoint here.
 
 }
