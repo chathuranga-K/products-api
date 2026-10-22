@@ -41,4 +41,11 @@ public class ProductService {
                 .toList();
     }
 
+    // Search products less than the user entered price value
+    public List<Product> findProductsBelowPrice(double price) {
+        return products.values().stream()
+                .filter(p -> p.getPrice() < (price))
+                        .toList();
+    }
+
 }

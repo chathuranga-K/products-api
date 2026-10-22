@@ -35,4 +35,9 @@ public class ProductController {
     public List <Product> searchProduct(@RequestParam String name) {
         return productService.findByName(name);
     }
+
+    @GetMapping("/cheaper-than")
+    public List <Product> searchCheaperProduct(@RequestParam double price) {
+        return productService.findProductsBelowPrice(price);
+    }
 }
