@@ -13,17 +13,22 @@ public class Product {
         this.price = price;
     }
 
+    // Set & return ID
     public Long getId() {
-        return id;
-    }
+        return id;}
+    public void setId(Long id) {
+        this.id = id;}
 
+    // Set & return Name
     public String getName() {
-        return name;
-    }
+        return name;}
+    public void setName(String name) {
+        this.name = name;}
 
+    // Set & return price
     public double getPrice() {
-        return price;
-    }
-
+        return price;}
+    public void setPrice(double price) {
+        this.price = price;}
 
 }
