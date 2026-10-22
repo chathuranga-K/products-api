@@ -3,40 +3,40 @@ package uk.ac.westminster.products_api;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.Optional;
 
 @Service
 public class ProductService {
-    private List<Product> products = new ArrayList<>();
+    private Map<Long, Product> products = new HashMap<>();
     private Long nextId = 1L;
 
     // Get all the product from Product List
     public List<Product> getAllProducts() {
-        return products;
+        return new ArrayList<> (products.values());
     }
 
     // Insert each product in a JASON format
     public Product addProduct(Product product) {
         product.setId(nextId++);
-        products.add(product);
+        products.put(product.getId(), product);
         return product;
     }
 
     // Search product using ID
     public Optional<Product> getProductById(Long id) {
-        return products.stream()
-                .filter(p -> p.getId().equals(id))
-                .findFirst();
+        return Optional.ofNullable(products.get(id));
     }
 
     // Delete product using ID
     public void deleteProduct(Long id) {
-        products.removeIf(p -> p.getId().equals(id));
+        products.remove(id);
     }
 
     // Search product by referring product name
     public List <Product> findByName(String name) {
-        return products.stream()
+        return products.values().stream()
                 .filter(p -> p.getName().contains(name))
                 .toList();
     }
