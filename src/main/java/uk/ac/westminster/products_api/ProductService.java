@@ -12,6 +12,18 @@ public class ProductService {
     private Map<Long, Product> products = new HashMap<>();
     private Long nextId = 1L;
 
+    // id, name, price properties came along with the Product class when extending to DigitalProduct & PhysicalProduct
+    // Initialize two objects
+    public ProductService() {
+        products.put(nextId, new DigitalProduct(
+                nextId++, "Clean Code (E-book)", 29.99,
+                "/downloads/clean-code.pdf", 4.2));
+
+        products.put(nextId, new PhysicalProduct(
+                nextId++, "27-inch monitor", 249.99,
+                5.4, "61cm x 41cm x 18cm"));
+    }
+
     // Get all the product from Product List
     public List<Product> getAllProducts() {
         return new ArrayList<> (products.values());
